@@ -24,6 +24,15 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity {
 
     private final int CAM = 0;
+    ImageView building;
+    ImageView logo;
+    ImageView tagline;
+    ImageView location;
+
+    Animation slideUpAnimation;
+    Animation slideDownAnimation;
+    Animation slideLeftAnimation;
+    Animation slideRightAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,29 +44,7 @@ public class MainActivity extends AppCompatActivity {
         // Clearing ArchitectView cache
         clearCache(ArchitectView.getCacheDirectoryAbsoluteFilePath(this));
 
-        ImageView building = (ImageView) findViewById(R.id.building);
-        Animation slideUpAnimation;
-        slideUpAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.slideup);
-        building.startAnimation(slideUpAnimation);
-
-        ImageView logo = (ImageView) findViewById(R.id.logo);
-        Animation slideDownAnimation;
-        slideDownAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.slidedown);
-        logo.startAnimation(slideDownAnimation);
-
-        ImageView tagline = (ImageView) findViewById(R.id.tagline);
-        Animation slideLeftAnimation;
-        slideLeftAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.slideleft);
-        tagline.startAnimation(slideLeftAnimation);
-
-        ImageView location = (ImageView) findViewById(R.id.location);
-        Animation slideRightAnimation;
-        slideRightAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.slideright);
-        location.startAnimation(slideRightAnimation);
+        initGraphics();
 
         Button login = (Button) findViewById(R.id.start);
         login.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +58,32 @@ public class MainActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
+    @Override
+    public void onWindowFocusChanged (boolean hasFocus) {
+        if(hasFocus) {
+            location.startAnimation(slideRightAnimation);
+            tagline.startAnimation(slideLeftAnimation);
+            logo.startAnimation(slideDownAnimation);
+            building.startAnimation(slideUpAnimation);
+
+        }
+    }
+
+    public void initGraphics() {
+        building = (ImageView) findViewById(R.id.building);
+        logo = (ImageView) findViewById(R.id.logo);
+        tagline = (ImageView) findViewById(R.id.tagline);
+        location = (ImageView) findViewById(R.id.location);
+
+        slideUpAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slideup);
+        slideDownAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slidedown);
+        slideLeftAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slideleft);
+        slideRightAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slideright);
+    }
     // Check if device can support Wikitude(AR) API
     private void deviceSupport() {
         if (ArchitectView.isDeviceSupported(this)) {
@@ -108,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ARtour.class);
             MainActivity.this.startActivity(intent);
         }
-
     }
 
     private void camPermission() {

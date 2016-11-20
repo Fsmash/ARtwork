@@ -11,7 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.wikitude.architect.ArchitectView;
@@ -32,8 +35,31 @@ public class MainActivity extends AppCompatActivity {
         // Clearing ArchitectView cache
         clearCache(ArchitectView.getCacheDirectoryAbsoluteFilePath(this));
 
-        Button login = (Button) findViewById(R.id.start);
+        ImageView building = (ImageView) findViewById(R.id.building);
+        Animation slideUpAnimation;
+        slideUpAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slideup);
+        building.startAnimation(slideUpAnimation);
 
+        ImageView logo = (ImageView) findViewById(R.id.logo);
+        Animation slideDownAnimation;
+        slideDownAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slidedown);
+        logo.startAnimation(slideDownAnimation);
+
+        ImageView tagline = (ImageView) findViewById(R.id.tagline);
+        Animation slideLeftAnimation;
+        slideLeftAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slideleft);
+        tagline.startAnimation(slideLeftAnimation);
+
+        ImageView location = (ImageView) findViewById(R.id.location);
+        Animation slideRightAnimation;
+        slideRightAnimation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slideright);
+        location.startAnimation(slideRightAnimation);
+
+        Button login = (Button) findViewById(R.id.start);
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startTour();

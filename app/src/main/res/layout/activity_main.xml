@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,38 +9,57 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/sky"
     tools:context="com.example.bryant.artwork.MainActivity">
 
-    <Button
-        android:text="Login"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="144dp"
-        android:id="@+id/login_button"
+        app:srcCompat="@drawable/building"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:id="@+id/building"
+        android:scaleType="fitEnd" />
 
-    <EditText
+
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_centerVertical="true"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/tagline"
+        android:id="@+id/tagline"
+        android:layout_marginTop="123dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="54dp"
-        android:layout_marginStart="54dp"
-        android:text="Password"
-        android:id="@+id/editText" />
+        android:layout_alignParentStart="true" />
 
-    <EditText
+    <ImageView
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/location"
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_alignTop="@+id/tagline"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/logo"
+        android:id="@+id/logo"
+        android:layout_marginTop="31dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Get Started"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="netID"
-        android:ems="10"
-        android:layout_above="@+id/editText"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
-        android:id="@+id/editText2" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:id="@+id/start" />
+
+
 </RelativeLayout>

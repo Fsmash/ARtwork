@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         // Clearing ArchitectView cache
         clearCache(ArchitectView.getCacheDirectoryAbsoluteFilePath(this));
 
-        Button login = (Button) findViewById(R.id.login_button);
+        Button login = (Button) findViewById(R.id.start);
 
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
